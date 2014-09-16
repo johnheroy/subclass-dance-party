@@ -44,5 +44,21 @@ Dancer.prototype.onHover = function(callback){
   this.$node.on('mouseover', callback.bind(this));
 };
 
+Dancer.prototype.tracker = function(callback){
+  var that = this;
+  $('body').mousemove(function(event){
+    callback.call(that,event);
+  });
+};
+
+Dancer.prototype.travel = function(event){
+  // var pageX = event.pageX;
+  var pageY = event.pageY;
+  var newSize = (1000 - pageY) / (Math.random() * 30);
+  this.$node.css({
+    'border-radius': newSize,
+    'border-width': newSize
+  });
+};
 
 

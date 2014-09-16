@@ -1,6 +1,8 @@
 var ColorDancer = function(top,left,timeBetweenSteps){
   Dancer.apply(this,arguments);
   this.onHover(ColorDancer.prototype.avoid);
+  this.tracker(this.travel);
+
 };
 
 ColorDancer.prototype = Object.create(Dancer.prototype);

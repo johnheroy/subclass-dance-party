@@ -27,6 +27,7 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    console.log($('body').height());
     $('body').append(dancer.$node);
     window.dancers.push(dancer);
   });
@@ -44,7 +45,6 @@ $(document).ready(function(){
     $audio[0].pause();
     $audio[0].load();
     $audio[0].play();
-
   });
 
 });
