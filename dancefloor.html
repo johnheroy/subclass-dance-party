@@ -12,8 +12,17 @@
 
   </head>
   <body>
+  <audio id="background_audio" >
+      <source src="#" type="audio/mpeg" />
+  </audio>
     <div class="topbar">
       <span class="title">object dance party</span>
+      <select id="floor">
+        <option value="" disabled selected>Please select your dance floor</option>
+        <option value="1">Gymnastics</option>
+        <option value="2">Mortal Kombat</option>
+        <option value="3">Eighties</option>
+      </select>
       <a href="#" class="addDancerButton" data-dancer-class-name="BlinkyDancer">add a blinky dancer</a>
       <a href="#" class="addDancerButton" data-dancer-class-name="ColorDancer">add a Color dancer</a>
       <a href="#" class="addDancerButton" data-dancer-class-name="MemeDancer">add a Meme dancer</a>

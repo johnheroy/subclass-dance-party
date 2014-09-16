@@ -37,5 +37,15 @@ $(document).ready(function(){
     }
   });
 
+  $('#floor').change(function(){
+    var $audio = $('#background_audio');
+    $('body').css('background-image', 'url(background/' + $(this).val() + '.gif)');
+    $('audio source').attr('src',"audio/" + $(this).val() +".mp3");
+    $audio[0].pause();
+    $audio[0].load();
+    $audio[0].play();
+
+  });
+
 });
 
