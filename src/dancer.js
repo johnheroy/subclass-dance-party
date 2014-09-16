@@ -39,3 +39,10 @@ Dancer.prototype.getDistance = function(dancer){
   var b = Math.abs(parseInt(this.$node.css("left"), 10)-parseInt(dancer.$node.css("left"), 10));
   return Math.sqrt(a*a+b*b);
 };
+
+Dancer.prototype.onHover = function(callback){
+  this.$node.on('mouseover', callback.bind(this));
+};
+
+
+

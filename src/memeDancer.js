@@ -12,11 +12,11 @@ MemeDancer.prototype.step = function(){
   var top = parseInt(this.$node.css("top"), 10);
   // console.log(typeof top);
   if (this.onTop){
-    this.$node.animate({"top":top-20+'px'}, 'fast');
+    this.$node.animate({"top":top-20+'px'}, this._timeBetweenSteps / 2);
     this.onTop = false;
   } else {
     // console.log("Not on top");
-    this.$node.animate({"top":top+20+'px'}, 'fast');
+    this.$node.animate({"top":top+20+'px'}, this._timeBetweenSteps / 2);
     this.onTop = true;
   }
   var shortestDist = 10000 ;
@@ -34,14 +34,14 @@ MemeDancer.prototype.step = function(){
   if (closestDancer){
     var x = parseInt(this.$node.css("left"),10) - parseInt(closestDancer.$node.css("left"));
     var y = parseInt(this.$node.css("top"),10) - parseInt(closestDancer.$node.css("top"));
-    var moveX = (x*20)/shortestDist;
-    var moveY = (y*20)/shortestDist;
+    var moveX = (x*100)/shortestDist;
+    var moveY = (y*100)/shortestDist;
     var currTop = parseInt(this.$node.css("top"), 10);
     var currLeft = parseInt(this.$node.css("left"), 10);
     this.$node.animate({
       top:currTop + moveY,
       left:currLeft +moveX
-    }, 'fast');
+    }, this._timeBetweenSteps / 2);
   }
 };
 
