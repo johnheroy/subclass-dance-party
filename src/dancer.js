@@ -22,7 +22,7 @@ Dancer.prototype.setPosition = function(top, left){
   //
   // console.log(top);
   // console.log(left);
-  console.log("Setting Position");
+  // console.log("Setting Position");
   var styleSettings = {
     top: top,
     left: left
@@ -30,3 +30,12 @@ Dancer.prototype.setPosition = function(top, left){
   this.$node.css(styleSettings);
 };
 
+Dancer.prototype.lineUp = function(){
+  this.$node.css({left: 0});
+};
+
+Dancer.prototype.getDistance = function(dancer){
+  var a = Math.abs(parseInt(this.$node.css("top"), 10)-parseInt(dancer.$node.css("top"), 10));
+  var b = Math.abs(parseInt(this.$node.css("left"), 10)-parseInt(dancer.$node.css("left"), 10));
+  return Math.sqrt(a*a+b*b);
+};
