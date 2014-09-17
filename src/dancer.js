@@ -3,6 +3,7 @@ var Dancer = function(top, left, timeBetweenSteps){
   // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dancer"></span>');
   this._timeBetweenSteps = timeBetweenSteps;
+  this.congoing = false;
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
   // this one sets the position to some random default point within the body
   this.setPosition(top, left);
@@ -60,5 +61,44 @@ Dancer.prototype.travel = function(event){
     'border-width': newSize
   });
 };
+
+Dancer.prototype.doTheConga = function () {
+  var visited = [false,false,false,false,false,false];
+  var dancer = this;
+  var congoLine = setInterval((function(){
+    var i = 0;
+    while(i < visited.length){
+      debugger;
+      if(!visited[i]){
+        break;
+      }
+      i++;
+    }
+    if(i === visited.length){
+      clearInterval(congoLine);
+    }
+    var waypoint = waypoints[i];
+    var currTop = parseInt(this.$node.css("top"), 10);
+    var currLeft = parseInt(this.$node.css("left"), 10);
+    var dist = Math.sqrt(Math.pow(currTop - waypoint.top,2) + Math.pow(currLeft - waypoint.left,2));
+    var moveX =  20 * (waypoint.left - currLeft)/dist;
+    var moveY =  20 * (waypoint.top - currTop)/dist;
+    this.$node.css({
+      'top':currTop + moveY,
+      'left':currLeft + moveX
+    });
+    currTop = parseInt(this.$node.css("top"), 10);
+    currLeft = parseInt(this.$node.css("left"), 10);
+    if(Math.abs(currTop - waypoint.top) < 50 &&Math.abs(currLeft - waypoint.left) < 50 ){
+      visited[i] = true;
+      this.congoing = false;
+    }
+    // check for the next one to move to and move
+    // if all of them are visited
+
+
+  }).bind(dancer), 200);
+};
+
 
 

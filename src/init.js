@@ -47,5 +47,19 @@ $(document).ready(function(){
     $audio[0].play();
   });
 
+  $('.congaButton').on('click',function(){
+    $('audio source').attr('src', "audio/conga.mp3");
+    var $audio = $('#background_audio');
+    $audio[0].pause();
+    $audio[0].load();
+    $audio[0].play();
+    for (var i = 0; i < window.dancers.length; i++){
+      window.dancers[i].doTheConga();
+      window.dancers[i].congoing = true;
+    }
+  });
+
+
+
 });
 
